@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "author": "Doménica Fajardo",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-breadboard-half",
+      "id": "bb1",
+      "top": 6.6,
+      "left": 108.4,
+      "attrs": { "color": "#eeefed" }
+    },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 9.6, "left": -23.96, "attrs": {} },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": 32.8,
+      "left": 145.1,
+      "attrs": { "common": "cathode" }
+    },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -114.9, "left": 253.8, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "bb1:tn.3", "bb1:4t.a", "black", [ "v0" ] ],
+    [ "esp:25", "bb1:3t.a", "red", [ "h-19.05", "v-144", "h134.4", "v86.4" ] ],
+    [ "esp:26", "bb1:5t.d", "green", [ "h0" ] ],
+    [ "esp:27", "bb1:6t.d", "blue", [ "h0" ] ],
+    [ "esp:GND.3", "bb1:tn.1", "black", [ "h0" ] ],
+    [ "esp:3V3", "bb1:tp.2", "red", [ "v-48", "h171.35" ] ],
+    [ "rgb1:R", "bb1:3t.c", "", [ "$bb" ] ],
+    [ "rgb1:COM", "bb1:4t.d", "", [ "$bb" ] ],
+    [ "rgb1:G", "bb1:5t.c", "", [ "$bb" ] ],
+    [ "rgb1:B", "bb1:6t.c", "", [ "$bb" ] ],
+    [ "esp:4", "dht1:SDA", "green", [ "h0" ] ],
+    [ "dht1:GND", "bb1:tn.15", "black", [ "v0" ] ],
+    [ "dht1:VCC", "bb1:tp.12", "red", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
